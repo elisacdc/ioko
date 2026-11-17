@@ -23,9 +23,9 @@ La date d’évaluation s’inscrit dans une programmation arrêtée par les aut
 
 Ce point est important : l’évaluation n’est pas un événement isolé que l’on prépare quelques semaines avant la visite. Elle vient photographier une organisation et des pratiques déjà en place.
 
-## 157 critères, mais l’enjeu n’est pas de « réciter le référentiel »
+## Le référentiel compte 157 critères, mais tous ne s’appliquent pas à chaque SAD
 
-Le référentiel national comprend 42 objectifs et 157 critères, répartis autour de neuf grandes thématiques :
+Le référentiel national comprend 42 objectifs et 157 critères. Les critères effectivement investigués dépendent du champ d’application associé à la catégorie de la structure. La HAS confirme qu’il existe 129 critères génériques et 28 spécifiques, dont l’applicabilité dépend notamment de la catégorie FINESS. Ces critères sont répartis autour de neuf grandes thématiques :
 
 - bientraitance et éthique ;
 - droits de la personne accompagnée ;
@@ -111,7 +111,7 @@ Il faut pouvoir montrer qu’elle a été traitée, qu’une réponse a été ap
 
 La HAS insiste sur l’intérêt de l’auto-évaluation. Elle permet aux équipes de se familiariser avec le référentiel, de préparer les éléments nécessaires et surtout d’associer progressivement professionnels et personnes accompagnées à la démarche. Elle n’impose pas un outil particulier.
 
-Un service peut utiliser Synaé, un logiciel qualité, un fichier de suivi ou un autre support, dès lors qu’il s’appuie réellement sur le référentiel. L’intérêt n’est donc pas de remplir mécaniquement 157 cases. Une auto-évaluation utile devrait plutôt permettre de répondre, pour chaque sujet important, à quatre questions :
+Un service peut utiliser Synaé, un logiciel qualité, un fichier de suivi ou un autre support, dès lors qu’il s’appuie réellement sur le référentiel. L’intérêt n’est donc pas de remplir mécaniquement toutes les cases du référentiel.
 
 Les équipes peuvent se poser quatre questions pour chaque sujet important :
 
@@ -130,7 +130,7 @@ Une erreur fréquente serait de concentrer toute la préparation sur la directio
 
 Que faites-vous si vous soupçonnez une situation de maltraitance ? Comment signalez-vous une chute ou un incident ? Que faites-vous lorsque l’état d’une personne se dégrade ? Comment transmettez-vous une information importante ? Comment respectez-vous les choix et l’intimité d’une personne dans son propre domicile ? Qui contactez-vous lorsque la situation dépasse votre champ d’intervention ?
 
-L’objectif n’est pas que chaque professionnel connaisse par cœur les 157 critères du référentiel. Il doit en revanche connaître les pratiques essentielles de son service et savoir les mobiliser dans une situation réelle. C’est aussi pourquoi la formation ne devrait pas être pensée uniquement comme une preuve documentaire à présenter pendant l’évaluation.
+L’objectif n’est pas que chaque professionnel connaisse par cœur l’ensemble du référentiel. Il doit en revanche connaître les pratiques essentielles de son service et savoir les mobiliser dans une situation réelle. C’est aussi pourquoi la formation ne devrait pas être pensée uniquement comme une preuve documentaire à présenter pendant l’évaluation.
 
 Un plan de formation peut être parfaitement rempli sur le papier et ne pas répondre aux difficultés réellement rencontrées par les équipes. L’enjeu est plutôt de faire le lien entre :
 
