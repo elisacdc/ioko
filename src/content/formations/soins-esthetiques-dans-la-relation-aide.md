@@ -5,11 +5,12 @@ illustration: "images/formations/soins-esthetiques-dans-la-relation-aide.webp"
 illustrationAlt: "Illustration de la formation Soins esthétiques dans la relation d’aide."
 illustrationWidth: 960
 illustrationHeight: 1200
-programUpdated: "06/10/2026"
-programVersion: "1.0"
-programHash: "e49e11a0f6aeeb940cdbc4885548c0505c258836ab7b103675fd2340f2ee82d4"
+programUpdated: "17/11/2026"
+programVersion: "1.1"
+programHash: "5dd149f34e32ff89b8a9f9cd1461d2c6a5e7c084eff2d6fc1a5aa0d535f03634"
 title: "Soins esthétiques dans la relation d’aide"
-seoTitle: "Formation soins esthétiques et relation d’aide"
+seoTitle: "Formation auxiliaire de vie : soins esthétiques et image de soi"
+metaDescription: "Formation pour auxiliaires de vie sur les soins esthétiques et l’image de soi : proposer des gestes de confort dans le respect de l’intimité et du consentement."
 category: "Confort & image de soi"
 duration: "7 heures · 1 jour"
 format: "Présentiel"
@@ -26,7 +27,7 @@ objectives:
   [
     "Identifier les effets de l’image corporelle sur le bien-être et l’estime de soi",
     "Repérer les attentes et habitudes de la personne concernant le soin de son apparence",
-    "Adapter son intervention face aux manifestations comportementales",
+    "Adapter les soins proposés aux capacités et aux préférences de la personne",
     "Adopter un toucher professionnel respectueux de l’intimité et du consentement",
     "Réaliser des gestes simples de soin et de valorisation adaptés à la personne accompagnée",
   ]

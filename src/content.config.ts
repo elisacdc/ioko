@@ -7,6 +7,7 @@ const formations = defineCollection({
   schema: z.object({
     title: z.string(),
     seoTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
     slug,
     category: z.string(),
     illustration: z.string(),

@@ -1,11 +1,11 @@
 ---
 slug: "evaluation-has-services-autonomie-domicile"
 title: "Évaluation HAS des services autonomie à domicile : ce qu’il faut vraiment préparer"
-seoTitle: "Évaluation HAS des SAD : préparer son service"
+seoTitle: "Évaluation HAS des SAD : formation et préparation des équipes"
 date: "2026-10-02"
 category: "Qualité & évaluation"
 description: "La Haute Autorité de santé a publié en avril 2026 une fiche spécifiquement consacrée à l’évaluation de la qualité des services autonomie à domicile. Au-delà du référentiel, elle apporte surtout des précisions très concrètes sur ce que les évaluateurs vont chercher à comprendre : l’expérience réelle des personnes accompagnées, les pratiques des professionnels et la capacité du service à piloter la qualité au quotidien."
-metaDescription: "Les repères de la HAS pour préparer l’évaluation d’un service autonomie à domicile et relier les documents aux pratiques observées chez les personnes accompagnées."
+metaDescription: "Préparer l’évaluation HAS d’un SAD : critères applicables, auto-évaluation et formation des équipes. Le périmètre dépend de la catégorie de la structure."
 readingTime: "6 min de lecture"
 demo: false
 sources: []

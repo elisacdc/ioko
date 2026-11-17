@@ -5,7 +5,7 @@ seoTitle: "Évaluations ESSMS 2025 : résultats de la HAS"
 date: "2026-10-21"
 category: "Qualité & évaluation"
 description: "La Haute Autorité de santé a publié son bilan 2025 des évaluations des établissements et services sociaux et médico-sociaux. Les résultats sont globalement satisfaisants, mais ils font apparaître un contraste important : les droits des personnes sont plutôt bien intégrés dans les pratiques, tandis que la gestion des risques, les plaintes, les événements indésirables ou encore la continuité d’activité restent beaucoup plus fragiles. Pour les services à domicile, ces résultats donnent des indications très concrètes sur les sujets à travailler dès maintenant."
-metaDescription: "Que révèle le bilan 2025 de la HAS sur les évaluations ESSMS ? Repères et points de vigilance pour les services autonomie à domicile."
+metaDescription: "Évaluation HAS des ESSMS : résultats 2025, critères impératifs et besoins de formation pour préparer les équipes des services autonomie à domicile."
 readingTime: "7 min de lecture"
 demo: false
 sources: []

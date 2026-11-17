@@ -3,11 +3,12 @@
 slug: "alzheimer-et-maladies-neurodegeneratives"
 illustration: "images/formations/alzheimer-et-maladies-neurodegeneratives.webp"
 illustrationAlt: "Illustration de la formation Alzheimer et maladies neurodégénératives."
-programUpdated: "06/10/2026"
-programVersion: "1.0"
-programHash: "685bf80c3b8ace055ed8cd5eaec935b637c3ae45b183b1a298439a8547b87890"
+programUpdated: "17/11/2026"
+programVersion: "1.2"
+programHash: "b2911db8e69f4e8f6d7938fdb1a72c0db7c388fad8bb918c5f6a534ad703c929"
 title: "Alzheimer et maladies neurodégénératives"
 seoTitle: "Formation Alzheimer et maladies neurodégénératives"
+metaDescription: "Formation pour auxiliaires de vie sur Alzheimer et les maladies neurodégénératives : comprendre les troubles, adapter la communication et l’accompagnement."
 category: "Accompagnements spécifiques"
 duration: "14 heures · 2 jours"
 format: "Présentiel ou distanciel"
@@ -65,6 +66,8 @@ pricing: "Tarification sur mesure. Contactez-nous pour obtenir un devis adapté 
 access: "Après analyse des besoins, une proposition vous est transmise. La date de formation est fixée d’un commun accord selon les disponibilités des différentes parties."
 ---
 
-Cette formation apporte des repères sur la maladie d’Alzheimer et les autres maladies neurodégénératives, notamment les dégénérescences fronto-temporales et la maladie à corps de Lewy. Elle relie la compréhension des troubles aux situations rencontrées dans l’accompagnement.
+Les maladies neurodégénératives entraînent une évolution progressive des capacités cognitives, comportementales et parfois motrices de la personne. La maladie d’Alzheimer en est l’une des formes les plus connues, mais d’autres pathologies peuvent entraîner des manifestations différentes et nécessiter une adaptation permanente de l’accompagnement. La formation aborde notamment Alzheimer, les dégénérescences fronto-temporales et la maladie à corps de Lewy.
 
-Désorientation, anxiété, agitation, opposition ou apathie : les participants apprennent à rechercher les causes possibles des manifestations observées pour ajuster leur intervention. La communication, le maintien des capacités restantes et la relation avec les proches sont au cœur du programme.
+Cette formation permet aux professionnels de mieux comprendre les troubles cognitifs et comportementaux afin de donner du sens à certaines réactions : désorientation, anxiété, agitation, agressivité, opposition, déambulation ou encore apathie. L’objectif est de ne pas se limiter au comportement observé, mais d’en rechercher les causes possibles et d’adapter son intervention.
+
+Une attention particulière est portée à la communication, au maintien des capacités restantes et à la relation avec les proches. Les participants développent ainsi une posture fondée sur l’écoute, l’adaptation, l’empathie et le respect de la singularité de chaque personne.
