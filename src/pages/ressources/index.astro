@@ -1,0 +1,205 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import HomeFinalCTA from "../../components/HomeFinalCTA.astro";
+import { BOOKING_URL, LINKEDIN_URL, NEWSLETTER_URL } from "../../config/site";
+import { url } from "../../lib/links";
+import "@fontsource-variable/manrope";
+import "../../styles/home.css";
+import "../../styles/formations.css";
+import "../../styles/resources.css";
+
+const articles = (await getCollection("articles")).sort(
+  (a, b) => {
+    const aDate = a.data.date?.getTime();
+    const bDate = b.data.date?.getTime();
+    if (aDate !== undefined && bDate !== undefined) return bDate - aDate;
+    if (aDate !== undefined) return -1;
+    if (bDate !== undefined) return 1;
+    return a.id.localeCompare(b.id, "fr", { numeric: true });
+  },
+);
+const categories = [...new Set(articles.map(({ data }) => data.category))].sort((a, b) =>
+  a.localeCompare(b, "fr", { sensitivity: "base" }),
+);
+const bookingHref = BOOKING_URL;
+---
+
+<Layout
+  title="Ressources sur l’aide à domicile et le secteur médico-social"
+  description="Retrouvez les articles AFRAP sur les services autonomie à domicile, les pratiques professionnelles, l’évaluation HAS et l’accompagnement à domicile."
+  ogImage="images/resources-1.webp"
+  ogImageAlt="Un espace de travail avec un carnet et un ordinateur."
+>
+  <div class="home-page resources-page formations-page">
+    <section class="home-hero formations-hero" aria-labelledby="resources-title">
+      <div class="container home-hero-grid formations-hero-grid">
+        <div class="home-hero-copy">
+          <p class="home-eyebrow">Nos articles</p>
+          <h1 id="resources-title">Nos ressources & les actualités</h1>
+          <div class="home-hero-intro">
+            <p>
+              Suivez l’AFRAP sur LinkedIn ou inscrivez-vous à notre newsletter
+              pour recevoir une veille à jour et pertinente, directement dans
+              votre fil ou votre boîte mail.
+            </p>
+            <div class="resources-follow-actions" aria-label="Suivre AFRAP et recevoir la newsletter">
+              {LINKEDIN_URL ? (
+                <a class="resources-follow-button" href={LINKEDIN_URL} aria-label="Suivre AFRAP sur LinkedIn">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.37 4.28 5.46v6.28zM5.33 7.43a2.06 2.06 0 1 1 .02-4.12 2.06 2.06 0 0 1-.02 4.12zm1.78 13.02H3.55V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.44c.98 0 1.79-.77 1.79-1.72V1.72C24 .77 23.2 0 22.22 0z" /></svg>
+                  <span>LinkedIn</span>
+                </a>
+              ) : (
+                <button class="resources-follow-button" type="button" disabled aria-label="LinkedIn AFRAP — lien à ajouter">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.37 4.28 5.46v6.28zM5.33 7.43a2.06 2.06 0 1 1 .02-4.12 2.06 2.06 0 0 1-.02 4.12zm1.78 13.02H3.55V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.44c.98 0 1.79-.77 1.79-1.72V1.72C24 .77 23.2 0 22.22 0z" /></svg>
+                  <span>LinkedIn</span>
+                </button>
+              )}
+              {NEWSLETTER_URL ? (
+                <a class="resources-follow-button" href={NEWSLETTER_URL} aria-label="S’inscrire à la newsletter AFRAP">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 17V7A1.5 1.5 0 0 1 3 5.5Zm0 2v.2l9 5.8 9-5.8v-.2H3Zm18 9.5V10l-8.46 5.45a1 1 0 0 1-1.08 0L3 10v7h18Z" /></svg>
+                  <span>Newsletter</span>
+                </a>
+              ) : (
+                <button class="resources-follow-button" type="button" disabled aria-label="Newsletter AFRAP — inscription à configurer">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 17V7A1.5 1.5 0 0 1 3 5.5Zm0 2v.2l9 5.8 9-5.8v-.2H3Zm18 9.5V10l-8.46 5.45a1 1 0 0 1-1.08 0L3 10v7h18Z" /></svg>
+                  <span>Newsletter</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+        <figure class="formations-cover" aria-label="Images autour de l’accompagnement et de la formation">
+          <img
+            src={url("images/resources-1.webp")}
+            width="1254"
+            height="1254"
+            alt="Un ordinateur, un carnet et une tasse sur une table de travail."
+            fetchpriority="high"
+          />
+          <img
+            src={url("images/resources-4.webp")}
+            width="1254"
+            height="1254"
+            alt="Des dossiers de travail annotés sur une table."
+          />
+          <img
+            src={url("images/resources-3.webp")}
+            width="1254"
+            height="1254"
+            alt="Une professionnelle accompagne une personne âgée."
+          />
+          <img
+            src={url("images/resources-2.webp")}
+            width="1254"
+            height="1254"
+            alt="Une plante dans un intérieur lumineux."
+          />
+          <span class="formations-cover-dot" aria-hidden="true"></span>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section resources-list" aria-labelledby="resources-list-title">
+      <div class="container">
+        <div class="home-section-heading">
+          <h2 id="resources-list-title">À lire et à partager</h2>
+        </div>
+
+        <div class="resources-controls" role="search" aria-label="Rechercher dans les ressources">
+          <label>
+            <span>Rechercher un article</span>
+            <input
+              id="resource-search"
+              type="search"
+              placeholder="Mot-clé, sujet…"
+              autocomplete="off"
+            />
+          </label>
+          <label>
+            <span>Filtrer par catégorie</span>
+            <select id="resource-category">
+              <option value="">Toutes les catégories</option>
+              {categories.map((category) => <option value={category}>{category}</option>)}
+            </select>
+          </label>
+        </div>
+
+        <p class="resources-results" id="resources-results" aria-live="polite"></p>
+        <div class="article-grid resources-grid" id="resources-grid">
+          {articles.map((article, index) => (
+            <div class="resources-item" data-resource-item data-index={index}>
+              <ArticleCard article={article} showDemo={false} />
+            </div>
+          ))}
+        </div>
+        <div class="resources-more-wrap">
+          <button class="button resources-more" id="resources-more" type="button" hidden>
+            Voir plus d’articles
+          </button>
+        </div>
+        <p class="resources-empty" id="resources-empty" hidden>Aucun article ne correspond à votre recherche.</p>
+      </div>
+    </section>
+
+    <HomeFinalCTA
+      id="resources-cta-title"
+      eyebrow="Échangeons"
+      title="Un projet, une question ?"
+      paragraphs={["Vous souhaitez échanger autour d’un sujet ou de vos besoins ? Contactez-nous ou prenez rendez-vous."]}
+      primaryLabel="Parlons de votre projet"
+      primaryHref={url("contact/")}
+      secondaryLabel="Prendre rendez-vous"
+      secondaryHref={bookingHref}
+      theme="petrol"
+    />
+  </div>
+</Layout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>("#resource-search");
+  const category = document.querySelector<HTMLSelectElement>("#resource-category");
+  const items = Array.from(document.querySelectorAll<HTMLElement>("[data-resource-item]"));
+  const moreButton = document.querySelector<HTMLButtonElement>("#resources-more");
+  const results = document.querySelector<HTMLElement>("#resources-results");
+  const emptyMessage = document.querySelector<HTMLElement>("#resources-empty");
+  let visibleLimit = 3;
+
+  const normalize = (text: string) =>
+    text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr").trim();
+
+  function updateResults() {
+    const query = normalize(search?.value ?? "");
+    const selectedCategory = category?.value ?? "";
+    const matches = items.filter((item) => {
+      const textMatches = !query || normalize(item.textContent ?? "").includes(query);
+      const categoryMatches = !selectedCategory || item.querySelector(".article-card > .eyebrow")?.textContent?.trim() === selectedCategory;
+      return textMatches && categoryMatches;
+    });
+
+    items.forEach((item) => {
+      const matchIndex = matches.indexOf(item);
+      item.hidden = matchIndex < 0 || matchIndex >= visibleLimit;
+    });
+
+    if (results) results.textContent = `${matches.length} article${matches.length > 1 ? "s" : ""}`;
+    if (emptyMessage) emptyMessage.hidden = matches.length > 0;
+    if (moreButton) moreButton.hidden = matches.length <= visibleLimit;
+  }
+
+  search?.addEventListener("input", () => {
+    visibleLimit = 3;
+    updateResults();
+  });
+  category?.addEventListener("change", () => {
+    visibleLimit = 3;
+    updateResults();
+  });
+  moreButton?.addEventListener("click", () => {
+    visibleLimit += 3;
+    updateResults();
+  });
+
+  updateResults();
+</script>

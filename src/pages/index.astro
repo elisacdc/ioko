@@ -1,0 +1,428 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import TrainingCard from "../components/TrainingCard.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import QualityMetric from "../components/QualityMetric.astro";
+import HomeFinalCTA from "../components/HomeFinalCTA.astro";
+import { qualityMetrics, qualityPeriod } from "../config/site";
+import { quoteMail, url } from "../lib/links";
+import "@fontsource-variable/manrope";
+import "../styles/home.css";
+
+const trainings = (await getCollection("formations"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 8);
+const articles = (await getCollection("articles"))
+  .sort((a, b) => {
+    const aDate = a.data.date?.getTime();
+    const bDate = b.data.date?.getTime();
+    if (aDate !== undefined && bDate !== undefined) return bDate - aDate;
+    if (aDate !== undefined) return -1;
+    if (bDate !== undefined) return 1;
+    return a.id.localeCompare(b.id, "fr", { numeric: true });
+  })
+  .slice(0, 6);
+const homeQualityMetrics = qualityMetrics.slice(0, 3);
+const qualityNote =
+  qualityPeriod ||
+  (homeQualityMetrics.some((metric) => metric.value === null)
+    ? "Données prochainement disponibles"
+    : "");
+const articleImages = [
+  { src: "images/home-practice-discussion.webp", alt: "Des professionnelles échangent autour de leurs pratiques" },
+  { src: "images/home-notes.webp", alt: "Un carnet ouvert pour préparer un projet de formation" },
+  { src: "images/home-walk-together.webp", alt: "Une professionnelle accompagne une personne à l’extérieur" },
+];
+---
+
+<Layout
+  title="Formations pour les professionnels de l’aide à domicile"
+  description="AFRAP propose des formations et des ressources destinées aux professionnels et aux structures de l’aide et de l’accompagnement à domicile. Découvrez des programmes conçus à partir des réalités du terrain."
+  ogImage="images/about-hero-hands.webp"
+  ogImageAlt="Une professionnelle accompagne une personne âgée à domicile."
+>
+  <div class="home-page">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="container home-hero-grid">
+        <div class="home-hero-copy">
+          <p class="home-eyebrow">Formation · Ressources · Accompagnement</p>
+          <h1 id="home-title">
+            Des formations et des ressources<br class="home-title-break" /> au
+            service des professionnels<br class="home-title-break" />
+            {" "}<span>de l’accompagnement</span>
+          </h1>
+          <div class="home-hero-intro">
+            <p>
+              AFRAP Compétences accompagne les structures et les professionnels
+              de l’aide à domicile dans le développement de leurs compétences et
+              de leurs pratiques.
+            </p>
+            <p>
+              Nous proposons des formations conçues à partir des réalités du
+              terrain, mais aussi des ressources pour prendre du recul,
+              approfondir certaines thématiques et suivre les évolutions du
+              secteur.
+            </p>
+          </div>
+          <div class="home-hero-actions">
+            <Button href={url("formations/")}>Découvrir nos formations</Button>
+            <Button href={url("ressources/")} secondary>
+              Explorer les ressources
+            </Button>
+          </div>
+        </div>
+        <figure class="home-hero-visual">
+          <img
+            src={url("images/home-hero.webp")}
+            width="351"
+            height="321"
+            alt="Une professionnelle accompagne une personne âgée, côte à côte à son domicile."
+            fetchpriority="high"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section
+      class="home-introduction"
+      aria-labelledby="home-introduction-title"
+    >
+      <div class="container home-introduction-grid">
+        <div class="home-introduction-heading">
+          <p class="home-eyebrow">AFRAP Compétences</p>
+          <h2 id="home-introduction-title">
+            Accompagner les professionnels dans les réalités de leur métier
+          </h2>
+          <div class="home-introduction-art">
+            <img
+              class="home-introduction-visual"
+              src={url("images/home-introduction-photo.webp")}
+              width="900"
+              height="675"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="home-introduction-copy">
+          <p>
+            Les métiers de l’aide et de l’accompagnement à domicile demandent
+            des compétences techniques, relationnelles et humaines qui
+            s’exercent dans des situations parfois complexes.
+          </p>
+          <p>
+            L'AFRAP a été créée pour proposer aux professionnels et
+            aux structures des contenus directement liés à ces réalités.
+          </p>
+          <p>
+            Notre démarche repose sur une idée simple : une formation est
+            réellement utile lorsqu’elle permet de comprendre une situation,
+            d’interroger ses pratiques et de repartir avec des repères et des
+            outils utilisables au quotidien.
+          </p>
+          <a class="text-link" href={url("afrap/")}>
+            Découvrir l’AFRAP <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-mission" aria-labelledby="home-mission-title">
+      <div class="container">
+        <SectionTitle
+          id="home-mission-title"
+          eyebrow="Notre mission"
+          title="Former, informer et accompagner"
+        />
+        <div class="home-pillars">
+          <article class="home-pillar">
+            <p class="home-pillar-kicker">
+              <span class="home-pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><path d="m3 12 13-7 13 7-13 7L3 12Z"/><path d="M8 15v7c5 4 11 4 16 0v-7M28 13v9"/><path d="M4 14v8"/></svg>
+              </span><span>01</span> Formations
+            </p>
+            <h3>Développer les compétences</h3>
+            <p>
+              Des formations construites autour des situations rencontrées par
+              les professionnels, avec des apports directement transposables
+              dans leurs pratiques.
+            </p>
+            <a class="text-link" href={url("formations/")}>
+              Voir les formations <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+          <article class="home-pillar">
+            <p class="home-pillar-kicker">
+              <span class="home-pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><path d="M8 4h12l6 6v18H8z"/><path d="M20 4v7h6M12 16h10M12 21h10"/></svg>
+              </span><span>02</span> Ressources
+            </p>
+            <h3>Prendre du recul sur ses pratiques</h3>
+            <p>
+              Des articles, repères et contenus de veille pour approfondir
+              certaines thématiques, suivre les évolutions du secteur et nourrir
+              la réflexion professionnelle.
+            </p>
+            <a class="text-link" href={url("ressources/")}>
+              Consulter les ressources <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+          <article class="home-pillar">
+            <p class="home-pillar-kicker">
+              <span class="home-pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="11" r="3"/><path d="M3 26v-3a8 8 0 0 1 16 0v3H3ZM19 19a7 7 0 0 1 10 6v1h-7"/></svg>
+              </span><span>03</span> Accompagnement
+            </p>
+            <h3>Partir de vos besoins</h3>
+            <p>
+              Chaque structure a son organisation, son équipe et ses
+              problématiques. Nous prenons le temps d’échanger avec vous afin
+              d’identifier vos besoins et de proposer une réponse adaptée.
+            </p>
+            <a class="text-link" href={url("contact/")}>
+              Échanger avec nous <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-formations" aria-labelledby="home-formations-title">
+      <div class="container home-feature-grid">
+        <div class="home-feature-copy">
+          <SectionTitle
+            id="home-formations-title"
+            eyebrow="Nos formations"
+            title="Les formations proposées"
+          />
+          <p class="home-section-intro">
+            Nos formations abordent aussi bien les gestes du quotidien que la
+            relation d’aide, la prévention, le bien-être professionnel et les
+            accompagnements spécifiques.
+          </p>
+          <a class="text-link home-feature-link" href={url("formations/")}>
+            Voir toutes les formations <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="home-feature-cards">
+          <div class="home-carousel-row">
+            <div
+              id="home-training-carousel"
+              class="home-training-carousel"
+              role="region"
+              aria-roledescription="carrousel"
+              aria-label="Formations AFRAP"
+              tabindex="0"
+            >
+              <div class="home-training-track">
+                {trainings.map((training, index) => (
+                  <div
+                    class="home-training-slide"
+                    role="group"
+                    aria-roledescription="diapositive"
+                    aria-label={`${index + 1} sur ${trainings.length}`}
+                  >
+                    <TrainingCard
+                      training={training}
+                      index={index}
+                      compact
+                      image={url(training.data.illustration)}
+                      imageAlt={training.data.illustrationAlt}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div
+              class="home-carousel-controls"
+              aria-label="Commandes du carrousel"
+            >
+              <button
+                class="home-carousel-arrow"
+                type="button"
+                data-carousel-direction="previous"
+                aria-controls="home-training-carousel"
+                aria-label="Formation précédente"
+              >
+                ←
+              </button>
+              <button
+                class="home-carousel-arrow"
+                type="button"
+                data-carousel-direction="next"
+                aria-controls="home-training-carousel"
+                aria-label="Formation suivante"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-resources" aria-labelledby="home-resources-title">
+      <div class="container home-feature-grid home-resource-grid">
+        <div class="home-feature-copy">
+          <SectionTitle
+            id="home-resources-title"
+            eyebrow="Ressources & actualités"
+            title="Des ressources pour suivre, comprendre et approfondir"
+          />
+          <div class="home-resource-intro">
+            <p>
+              Nous publions régulièrement des articles et des ressources pour
+              partager des repères, décrypter certains sujets et proposer des
+              pistes de réflexion utiles aux professionnels.
+            </p>
+          </div>
+          <a class="text-link home-feature-link" href={url("ressources/")}>
+            Voir toutes les ressources <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="home-feature-cards home-resource-cards">
+          <div class="home-carousel-row">
+            <button
+              class="home-carousel-arrow"
+              type="button"
+              data-carousel-direction="previous"
+              aria-controls="home-resource-carousel"
+              aria-label="Article précédent"
+            >
+              ←
+            </button>
+            <div
+              id="home-resource-carousel"
+              class="home-resource-carousel"
+              role="region"
+              aria-roledescription="carrousel"
+              aria-label="Ressources et actualités AFRAP"
+              tabindex="0"
+            >
+              <div class="home-resource-list home-resource-track">
+                {articles.map((article, index) => (
+                  <div
+                    class="home-resource-slide"
+                    role="group"
+                    aria-roledescription="diapositive"
+                    aria-label={`${index + 1} sur ${articles.length}`}
+                  >
+                    <ArticleCard
+                      article={article}
+                      showDemo={false}
+                      showDate={false}
+                      image={url(articleImages[index % articleImages.length].src)}
+                      imageAlt={articleImages[index % articleImages.length].alt}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button
+              class="home-carousel-arrow"
+              type="button"
+              data-carousel-direction="next"
+              aria-controls="home-resource-carousel"
+              aria-label="Article suivant"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-quality" aria-labelledby="home-quality-title">
+      <div class="container">
+        <p id="home-quality-title" class="home-eyebrow">
+          Nos indicateurs
+        </p>
+        <dl class="home-quality-grid">
+          {homeQualityMetrics.map((metric) => (
+            <QualityMetric {...metric} />
+          ))}
+        </dl>
+        {qualityNote && (
+          <p class="small home-quality-period">{qualityNote}</p>
+        )}
+      </div>
+    </section>
+
+    <HomeFinalCTA
+      id="home-cta-title"
+      eyebrow="Un projet de formation ?"
+      title="Échangeons sur les besoins de votre équipe"
+      paragraphs={[
+        "Vous souhaitez organiser une formation, obtenir un devis ou simplement faire le point sur vos besoins ?",
+        "Prenons quelques minutes pour en discuter et identifier ensemble la réponse la plus adaptée à votre structure.",
+      ]}
+      primaryLabel="Nous contacter"
+      primaryHref={url("contact/")}
+      secondaryLabel="Demander un devis"
+      secondaryHref={quoteMail()}
+    />
+    <script>
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+
+      document
+        .querySelectorAll<HTMLElement>(
+          "#home-training-carousel, #home-resource-carousel",
+        )
+        .forEach((carousel) => {
+          const track = carousel.querySelector<HTMLElement>(
+            ".home-training-track, .home-resource-track",
+          );
+          if (!track) return;
+
+          const slides = Array.from(track.children) as HTMLElement[];
+          const arrows = document.querySelectorAll<HTMLButtonElement>(
+            `[aria-controls="${carousel.id}"][data-carousel-direction]`,
+          );
+          const stepSize = () =>
+            slides.length < 2
+              ? carousel.clientWidth
+              : slides[1].offsetLeft - slides[0].offsetLeft;
+          const updateArrows = () => {
+            const atStart = carousel.scrollLeft <= 2;
+            const atEnd =
+              carousel.scrollLeft + carousel.clientWidth >=
+              carousel.scrollWidth - 2;
+            arrows.forEach((arrow) => {
+              arrow.disabled =
+                arrow.dataset.carouselDirection === "previous"
+                  ? atStart
+                  : atEnd;
+            });
+          };
+
+          arrows.forEach((arrow) => {
+            arrow.addEventListener("click", () => {
+              const direction =
+                arrow.dataset.carouselDirection === "next" ? 1 : -1;
+              carousel.scrollBy({
+                left: stepSize() * direction,
+                behavior: reducedMotion.matches ? "auto" : "smooth",
+              });
+            });
+          });
+
+          carousel.addEventListener("keydown", (event) => {
+            if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+            event.preventDefault();
+            carousel.scrollBy({
+              left: stepSize() * (event.key === "ArrowRight" ? 1 : -1),
+              behavior: reducedMotion.matches ? "auto" : "smooth",
+            });
+          });
+          carousel.addEventListener("scroll", updateArrows, { passive: true });
+          window.addEventListener("resize", updateArrows);
+          updateArrows();
+        });
+    </script>
+  </div>
+</Layout>

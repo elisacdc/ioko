@@ -1,0 +1,19 @@
+---
+import Button from "./Button.astro";
+import { url } from "../lib/links";
+---
+
+<section class="contact-cta">
+  <div class="container cta-inner">
+    <div>
+      <p class="eyebrow">Construisons la suite, ensemble</p>
+      <h2>
+        Une équipe, des besoins,
+        <br />
+        une formation adaptée.
+      </h2>
+      <p>Échangeons sur les réalités de votre structure.</p>
+    </div>
+    <Button href={url("contact/")}>Parlons de votre projet</Button>
+  </div>
+</section>

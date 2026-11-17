@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { url } from "../lib/links";
+interface Props {
+  article: CollectionEntry<"articles">;
+  showDemo?: boolean;
+  showDate?: boolean;
+  image?: string;
+  imageAlt?: string;
+}
+const { article, showDemo = true, showDate = true, image, imageAlt = "" } = Astro.props;
+const { data: a } = article;
+---
+
+<article class="article-card">
+  {image && <img class="article-card-image" src={image} alt={imageAlt} width="356" height="320" loading="lazy" />}
+  <p class="eyebrow">{a.category}</p>
+  <p class="article-meta">
+    {showDate && a.date && (
+      <>
+        <time datetime={a.date.toISOString()}>
+          {a.date.toLocaleDateString("fr-FR", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            timeZone: "UTC",
+          })}
+        </time>{" · "}
+      </>
+    )}
+    {a.readingTime}
+  </p>
+  {showDemo && a.demo && <span class="demo-label">Article exemple</span>}
+  <h3>
+    <a href={url(`ressources/${a.slug}/`)}>{a.title}</a>
+  </h3>
+  <p>{a.description}</p>
+  <a class="text-link" href={url(`ressources/${a.slug}/`)}>
+    Lire l’article <span aria-hidden="true">↗</span>
+  </a>
+</article>

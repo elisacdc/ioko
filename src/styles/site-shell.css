@@ -1,0 +1,222 @@
+/* Shared site chrome used by every page through Layout.astro. */
+.site-header,
+.site-footer {
+  --color-primary: #174a50;
+  --color-secondary: #c86f52;
+  --color-sage: #8fa69b;
+  --color-background: #f5f1e9;
+}
+
+.site-header .header-inner {
+  min-height: 116px;
+}
+
+.site-header .menu-toggle {
+  display: none;
+}
+
+.site-footer {
+  padding-top: 0.8rem;
+  background: #fff;
+}
+
+.site-footer .footer-top {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 1.4rem;
+  padding-bottom: 0.45rem;
+}
+
+.site-footer .footer-top > div:first-child {
+  max-width: 280px;
+}
+
+.site-footer .footer-top .brand-logo {
+  width: 64px;
+}
+
+.site-footer .footer-top p {
+  margin: 0.25rem 0 0;
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+.site-footer .footer-links-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer .footer-top .footer-nav {
+  gap: 0.1rem 0.55rem;
+  margin: 0;
+}
+
+.site-footer .footer-top .footer-nav a {
+  min-height: 30px;
+  padding-block: 0.25rem;
+  font-size: 0.82rem;
+}
+
+.site-footer .footer-links-contact > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.6rem;
+  white-space: nowrap;
+}
+
+.site-footer .footer-links-contact > p br {
+  display: none;
+}
+
+.site-footer .footer-bottom {
+  align-items: center;
+  flex-direction: row;
+  padding-block: 0.45rem;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 900px) {
+  .site-header .header-inner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    min-height: 0;
+    gap: 0.8rem;
+    padding-block: 0.8rem;
+  }
+
+  .site-header .brand-definition {
+    min-width: 0;
+    border-left: 0;
+    padding-left: 0;
+    font-size: 0.72rem;
+  }
+
+  .site-header .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--color-primary);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  .site-header .menu-toggle-icon {
+    display: grid;
+    width: 18px;
+    height: 14px;
+    align-content: space-between;
+  }
+
+  .site-header .menu-toggle-icon::before,
+  .site-header .menu-toggle-icon::after,
+  .site-header .menu-toggle-icon span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    content: "";
+  }
+
+  .site-header nav {
+    display: none;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .site-header nav.is-open {
+    display: flex;
+  }
+
+  .site-header nav a {
+    min-height: 44px;
+    padding: 0.65rem 0.15rem;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header .header-inner {
+    grid-template-columns: 68px minmax(0, 1fr) auto;
+    column-gap: 0.65rem;
+    row-gap: 0.5rem;
+    padding-block: 0.65rem;
+  }
+
+  .site-header .brand-logo {
+    width: 68px;
+  }
+
+  .site-header .brand-definition {
+    font-size: 0.64rem;
+    line-height: 1.25;
+  }
+
+  .site-header .menu-toggle {
+    padding-inline: 0.55rem;
+    font-size: 0.82rem;
+  }
+
+  .site-header .menu-toggle-icon {
+    width: 16px;
+  }
+
+  .site-header .menu-toggle-icon::before,
+  .site-header .menu-toggle-icon::after,
+  .site-header .menu-toggle-icon span {
+    width: 16px;
+  }
+
+  .site-header nav {
+    grid-row: 2;
+  }
+
+  .site-footer .footer-top {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .site-footer .footer-top .brand-logo {
+    width: 54px;
+  }
+
+  .site-footer .footer-links-contact {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .site-footer .footer-top .footer-nav {
+    gap: 0 0.5rem;
+  }
+
+  .site-footer .footer-top .footer-nav a {
+    min-height: 26px;
+    font-size: 0.75rem;
+  }
+
+  .site-footer .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-block: 0.45rem;
+    font-size: 0.65rem;
+  }
+}

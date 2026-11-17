@@ -1,0 +1,118 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import ResourceFollowActions from "../components/ResourceFollowActions.astro";
+import { site } from "../config/site";
+import { mailto } from "../lib/links";
+import "../styles/resources.css";
+const emailLink = mailto(
+  "Prise de contact site internet",
+  "",
+);
+const bookingLink =
+  site.bookingUrl ||
+  mailto(
+    "Demande de rendez-vous",
+    "Bonjour,\n\nJe souhaiterais convenir d’un rendez-vous pour échanger sur un projet de formation.\n\nStructure :\nTéléphone :\nVos disponibilités :\n\nCordialement,",
+  );
+---
+
+<Layout
+  title="Contact AFRAP : parler de vos besoins de formation"
+  description="Contactez AFRAP Compétences au 06 36 38 86 82 ou à contact@afrap.fr pour organiser une formation, demander un devis ou convenir d’un rendez-vous."
+>
+  <section class="page-hero contact-page-hero">
+    <div class="container">
+      <p class="eyebrow">Nous contacter</p>
+      <h1>Parlons de vos besoins</h1>
+      <p class="lead">
+        Vous souhaitez organiser une formation, obtenir un devis ou échanger sur
+        les besoins de votre équipe ? Construisons ensemble une réponse adaptée
+        à votre structure.
+      </p>
+    </div>
+  </section>
+  <section class="section contact-section">
+    <div class="container contact-grid">
+      <div>
+        <h2>Votre projet commence par un échange</h2>
+        <p>
+          Présentez-nous votre structure, les professionnels concernés et les
+          situations que vous souhaitez travailler. Nous vous aiderons à
+          préciser votre besoin et les modalités de formation.
+        </p>
+        <p>
+          Vous pouvez nous appeler, nous écrire ou nous proposer un créneau pour
+          un premier rendez-vous.
+        </p>
+        <div class="contact-follow">
+          <p class="contact-follow-intro">
+            Suivez l’AFRAP sur LinkedIn ou inscrivez-vous à notre newsletter pour recevoir une veille à jour et pertinente, directement dans votre fil ou votre boîte mail.
+          </p>
+          <ResourceFollowActions />
+        </div>
+      </div>
+      <div class="contact-panel">
+        <dl>
+          <div>
+            <dt>Téléphone</dt>
+            <dd>
+              <span class="contact-phone-desktop">
+                {site.phone}
+              </span>
+              <a class="contact-phone-mobile" href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}>
+                {site.phone}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </dd>
+          </div>
+        </dl>
+        <div class="contact-actions">
+          <Button href={emailLink}>Nous écrire</Button>
+          <Button href={bookingLink}>Prendre rendez-vous</Button>
+        </div>
+      </div>
+    </div>
+    <div class="container contact-divider" aria-hidden="true"></div>
+  </section>
+</Layout>
+
+<style>
+  .contact-phone-mobile {
+    display: none;
+  }
+
+  .contact-follow {
+    margin-top: 1.75rem;
+  }
+
+  .contact-section .contact-panel {
+    border-top: 0;
+  }
+
+  .contact-divider {
+    height: 1px;
+    margin-top: 2.5rem;
+    background: var(--color-secondary);
+  }
+
+  .contact-follow-intro {
+    max-width: 68ch;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .contact-phone-desktop {
+      display: none;
+    }
+
+    .contact-phone-mobile {
+      display: inline;
+    }
+  }
+</style>

@@ -1,0 +1,174 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import HomeFinalCTA from "../../components/HomeFinalCTA.astro";
+import ResourceFollowActions from "../../components/ResourceFollowActions.astro";
+import { BOOKING_URL } from "../../config/site";
+import { url } from "../../lib/links";
+import "@fontsource-variable/manrope";
+import "../../styles/home.css";
+import "../../styles/formations.css";
+import "../../styles/resources.css";
+
+export async function getStaticPaths() {
+  return (await getCollection("articles")).map((article) => ({
+    params: { slug: article.data.slug },
+    props: { article },
+  }));
+}
+
+interface Props {
+  article: CollectionEntry<"articles">;
+}
+
+const { article } = Astro.props;
+const a = article.data;
+const { Content } = await render(article);
+const bookingHref = BOOKING_URL;
+const [allArticles, allTrainings] = await Promise.all([
+  getCollection("articles"),
+  getCollection("formations"),
+]);
+const relatedItems = [
+  ...a.relatedArticles
+    .map((slug) => allArticles.find((entry) => entry.data.slug === slug))
+    .filter((entry) => entry !== undefined)
+    .map((entry) => ({ title: entry.data.title, href: url(`ressources/${entry.data.slug}/`) })),
+  ...a.relatedTrainings
+    .map((slug) => allTrainings.find((entry) => entry.data.slug === slug))
+    .filter((entry) => entry !== undefined)
+    .map((entry) => ({ title: entry.data.title, href: url(`formations/${entry.data.slug}/`) })),
+];
+const articleImage = new URL(url("images/resources-1.webp"), Astro.site).href;
+---
+
+<Layout
+  title={a.seoTitle ?? a.title}
+  description={a.metaDescription ?? a.description}
+  article
+  noindex={a.demo}
+  ogImage="images/resources-1.webp"
+  ogImageAlt="Un espace de travail utilisé pour préparer des ressources professionnelles."
+  publishedTime={a.date?.toISOString()}
+  structuredData={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: a.title,
+      description: a.metaDescription ?? a.description,
+      datePublished: a.date?.toISOString(),
+      publisher: {
+        "@type": "Organization",
+        name: "AFRAP Compétences",
+        url: "https://www.afrap.fr/",
+        logo: {
+          "@type": "ImageObject",
+          url: new URL(url("images/logo-afrap.webp"), Astro.site).href,
+        },
+      },
+      image: [articleImage],
+      mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+      inLanguage: "fr-FR",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Ressources",
+          item: new URL(url("ressources/"), Astro.site).href,
+        },
+        { "@type": "ListItem", position: 2, name: a.title },
+      ],
+    },
+  ]}
+>
+  <div class="home-page resources-page formations-page resource-article-page">
+    <article>
+      <header class="resource-article-hero">
+        <div class="container">
+          <a class="back-link" href={url("ressources/")}>
+            ← Toutes les ressources
+          </a>
+          <p class="eyebrow resource-category">{a.category}</p>
+          <div class="resource-article-heading">
+            <h1>{a.title}</h1>
+          </div>
+          <div class="resource-article-summary">
+            <p class="lead">{a.description}</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="resource-article-body">
+        <div class="container prose resource-article-content">
+          <p class="resource-article-meta resource-article-reading-time">
+            {a.date && (
+              <>
+                <time datetime={a.date.toISOString()}>
+                  {a.date.toLocaleDateString("fr-FR", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    timeZone: "UTC",
+                  })}
+                </time>
+                <span aria-hidden="true"> · </span>
+              </>
+            )}
+            <span>{a.readingTime}</span>
+          </p>
+          <Content />
+          {a.sources.length > 0 && (
+            <section class="resource-article-sources" aria-labelledby="article-sources-title">
+              <h2 id="article-sources-title">Sources</h2>
+              <ul>
+                {a.sources.map((source) => (
+                  <li>
+                    {source.url ? (
+                      <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>
+                    ) : source.label}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {relatedItems.length > 0 && (
+            <section class="resource-article-sources" aria-labelledby="related-content-title">
+              <h2 id="related-content-title">Pour approfondir</h2>
+              <ul>
+                {relatedItems.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+              </ul>
+            </section>
+          )}
+        </div>
+      </div>
+
+      <div class="resource-article-follow">
+        <div class="container">
+          <p class="resource-follow-intro">
+            Suivez l’AFRAP sur LinkedIn ou inscrivez-vous à notre newsletter
+            pour recevoir une veille à jour et pertinente, directement dans
+            votre fil ou votre boîte mail.
+          </p>
+          <ResourceFollowActions />
+        </div>
+      </div>
+    </article>
+
+    <HomeFinalCTA
+      id="resource-article-cta-title"
+      eyebrow="Échangeons"
+      title="Un projet, une question ?"
+      paragraphs={["Vous souhaitez échanger autour d’un sujet ou de vos besoins ? Contactez-nous ou prenez rendez-vous."]}
+      primaryLabel="Parlons de votre projet"
+      primaryHref={url("contact/")}
+      secondaryLabel="Prendre rendez-vous"
+      secondaryHref={bookingHref}
+      theme="petrol"
+    />
+  </div>
+</Layout>

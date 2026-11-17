@@ -1,0 +1,77 @@
+---
+import Logo from "./Logo.astro";
+import { url } from "../lib/links";
+const links = [
+  ["Accueil", ""],
+  ["Qui sommes-nous ?", "afrap/"],
+  ["Formations", "formations/"],
+  ["Ressources", "ressources/"],
+  ["Contact", "contact/"],
+];
+const active = (path: string) =>
+  path
+    ? Astro.url.pathname.startsWith(url(path))
+    : Astro.url.pathname === url();
+---
+
+<a class="skip-link" href="#contenu">
+  Aller au contenu
+</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo-link" href={url()} aria-label="AFRAP Compétences — Accueil">
+      <Logo />
+    </a>
+    <p class="brand-definition">
+      <span>Agence de Formation,</span>
+      <span>de Ressources et d’Accompagnement</span>
+      <span>des Professionnels</span>
+    </p>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-controls="primary-navigation"
+      aria-expanded="false"
+      aria-label="Ouvrir le menu"
+    >
+      <span class="menu-toggle-icon" aria-hidden="true"><span></span></span>
+      <span>Menu</span>
+    </button>
+    <nav id="primary-navigation" aria-label="Navigation principale">
+      {links.map(([label, path]) => (
+        <a href={url(path)} aria-current={active(path) ? "page" : undefined}>
+          {label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".site-header").forEach((header) => {
+    const button = header.querySelector<HTMLButtonElement>(".menu-toggle");
+    const nav = header.querySelector<HTMLElement>("#primary-navigation");
+    if (!button || !nav) return;
+
+    const closeMenu = () => {
+      nav.classList.remove("is-open");
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Ouvrir le menu");
+    };
+
+    button.addEventListener("click", () => {
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!isOpen));
+      button.setAttribute("aria-label", isOpen ? "Ouvrir le menu" : "Fermer le menu");
+      nav.classList.toggle("is-open", !isOpen);
+    });
+
+    nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) closeMenu();
+    });
+  });
+</script>

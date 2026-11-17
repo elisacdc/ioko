@@ -1,0 +1,12 @@
+---
+interface Props {
+  label: string;
+  value: string | null;
+}
+const { label, value } = Astro.props;
+---
+
+<div class="quality-metric">
+  <dt>{label}</dt>
+  <dd>{value ?? "—"}</dd>
+</div>

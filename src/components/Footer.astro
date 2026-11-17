@@ -1,0 +1,39 @@
+---
+import Logo from "./Logo.astro";
+import { site } from "../config/site";
+import { url } from "../lib/links";
+---
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div>
+      <a href={url()} aria-label="AFRAP Compétences — Accueil">
+        <Logo />
+      </a>
+    </div>
+    <div class="footer-links-contact">
+      <nav class="footer-nav" aria-label="Navigation de pied de page">
+        <a href={url("afrap/")}>AFRAP</a>
+        <a href={url("formations/")}>Formations</a>
+        <a href={url("ressources/")}>Ressources</a>
+        <a href={url("contact/")}>Contact</a>
+      </nav>
+      <p>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <br />
+        <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}>{site.phone}</a>
+      </p>
+      {site.socialLinks.map((link) => (
+        <p>
+          <a href={link.url}>{link.label}</a>
+        </p>
+      ))}
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>
+      © {new Date().getFullYear()} {site.name} <a class="footer-legal-link" href={url("mentions-legales/")}>Mentions légales</a>
+    </span>
+    <span>Formation professionnelle · Aide et accompagnement à domicile</span>
+  </div>
+</footer>

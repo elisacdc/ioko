@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  index: number;
+}
+const { title, text, index } = Astro.props;
+---
+
+<div class="value">
+  <span class="value-index" aria-hidden="true">
+    0{index + 1}
+  </span>
+  <h3>{title}</h3>
+  <p>{text}</p>
+</div>

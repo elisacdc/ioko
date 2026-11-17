@@ -1,0 +1,371 @@
+/* Composition de la page organisme, calée sur sa maquette dédiée. */
+.about-page .about-hero {
+  padding-block: clamp(3rem, 4.5vw, 4.2rem);
+  background: var(--home-ivory);
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .about-page .container {
+    width: calc(100% - 128px);
+  }
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.about-hero h1 span {
+  color: var(--home-terracotta);
+}
+
+.about-hero-art {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 400px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.about-hero-art img,
+.about-hero-shape,
+.about-approach-visual img,
+.about-approach-shape {
+  position: absolute;
+  display: block;
+}
+
+.about-hero-art img {
+  z-index: 1;
+  inset: 7% 3% 7% 9%;
+  width: 88%;
+  height: 86%;
+  border-radius: 43% 10% 8% 37% / 30% 8% 8% 34%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 39% 8% 8% 27% / 27% 7% 8% 34%;
+}
+
+.about-hero-shape-sage {
+  z-index: -1;
+  inset: 0 3% 55% 35%;
+  border-radius: 55% 45% 50% 42%;
+  background: var(--home-sage);
+  transform: rotate(-13deg);
+}
+
+.about-hero-shape-terracotta {
+  z-index: 0;
+  inset: 51% 60% 8% 2%;
+  border-radius: 60% 16% 55% 45%;
+  background: var(--home-terracotta);
+  transform: rotate(17deg);
+}
+
+.about-hero-shape-petrol {
+  z-index: 0;
+  inset: 72% 1% 5% 58%;
+  border-radius: 45% 55% 15% 45%;
+  background: var(--home-petrol);
+  transform: rotate(-9deg);
+}
+
+.about-values,
+.about-funding {
+  background: #fff;
+}
+
+.about-approach,
+.about-trainers,
+.about-funding {
+  padding-block: clamp(3rem, 4.5vw, 4.2rem);
+}
+
+.about-approach-grid,
+.about-trainers-grid,
+.about-funding-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  align-items: start;
+  gap: clamp(2rem, 4.8vw, 3.75rem);
+}
+
+.about-hero-description {
+  max-width: 48rem;
+  margin-top: 0.9rem;
+}
+
+.about-copy p,
+.about-approach-copy > p {
+  margin: 0 0 0.72rem;
+  line-height: 1.5;
+}
+
+.about-copy p:last-child,
+.about-approach-copy > p:last-child {
+  margin-bottom: 0;
+}
+
+.about-copy strong,
+.about-approach-copy strong {
+  color: var(--home-petrol);
+  font-weight: 700;
+}
+
+.about-copy .about-agency-name > span {
+  color: var(--home-terracotta);
+}
+
+.about-approach {
+  background: var(--home-ivory);
+}
+
+.about-approach-grid {
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.55fr);
+  gap: clamp(3rem, 6vw, 4.5rem);
+}
+
+.about-approach-heading h2,
+.about-trainers-heading h2,
+.about-funding-heading h2 {
+  white-space: pre-line;
+}
+
+.about-approach-visual {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 280px);
+  aspect-ratio: 1 / 0.98;
+  margin: 0 auto;
+}
+
+.about-approach-visual img {
+  z-index: 1;
+  inset: 16% 0 0 8%;
+  width: 92%;
+  height: 80%;
+  border-radius: 43% 7% 5% 38%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about-approach-shape-sage {
+  z-index: -1;
+  inset: 12% 0 0 17%;
+  border-radius: 50% 50% 8% 52%;
+  background: var(--home-sage);
+  transform: rotate(5deg);
+}
+
+.about-approach-shape-terracotta {
+  z-index: 0;
+  inset: 0 0 60% 42%;
+  border-radius: 60% 40% 12% 45%;
+  background: var(--home-terracotta);
+  transform: rotate(-9deg);
+}
+
+.about-approach-shape-petrol {
+  z-index: 0;
+  inset: 20% 47% 25% 2%;
+  border-radius: 60% 25% 30% 55%;
+  background: var(--home-petrol);
+  transform: rotate(-10deg);
+}
+
+.about-approach-copy .section-title > .eyebrow {
+  margin-bottom: 0.72rem;
+}
+
+.about-approach-copy .section-title h2 {
+  max-width: none;
+  margin-bottom: 0.65rem;
+}
+
+.about-values {
+  padding-block: clamp(3rem, 4.5vw, 4.2rem);
+}
+
+.about-values > .container > .home-eyebrow {
+  margin-bottom: 1rem;
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.about-value {
+  padding: 0 1.1rem;
+  text-align: center;
+}
+
+.about-value + .about-value {
+  border-left: 1px solid rgb(41 45 45 / 17%);
+}
+
+.about-value-number {
+  display: grid;
+  width: 3.6rem;
+  aspect-ratio: 1;
+  place-items: center;
+  margin: 0 auto 0.4rem;
+  border-radius: 50%;
+  background: #f8e4dc;
+  color: var(--home-terracotta);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.about-value:nth-child(even) .about-value-number {
+  background: #e8eee8;
+  color: var(--home-petrol);
+}
+
+.about-value h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.about-value p {
+  margin: 0 auto;
+  max-width: 27ch;
+  line-height: 1.45;
+}
+
+.about-trainers {
+  background: var(--home-sage-wash);
+}
+
+.about-trainers-grid,
+.about-funding-grid {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+}
+
+.about-funding-grid {
+  align-items: center;
+}
+
+.about-funding {
+  padding-block: clamp(3rem, 4.5vw, 4.2rem);
+}
+
+.about-page .home-final-cta--petrol {
+  background: var(--home-petrol);
+  color: #fff;
+}
+
+.about-page .home-final-cta--petrol .home-eyebrow,
+.about-page .home-final-cta--petrol h2,
+.about-page .home-final-cta--petrol p:not(.home-eyebrow) {
+  color: #fff;
+}
+
+.about-funding-logos {
+  display: block;
+  width: min(100%, 350px);
+  height: auto;
+  margin-top: 0.7rem;
+  object-fit: contain;
+}
+
+@media (max-width: 1050px) {
+  .about-page .about-hero,
+  .about-approach,
+  .about-values,
+  .about-trainers,
+  .about-funding {
+    padding-block: 3.3rem;
+  }
+}
+
+.about-page .about-hero {
+  padding-bottom: clamp(2rem, 3vw, 2.7rem);
+}
+
+.about-page .about-approach {
+  padding-top: clamp(2rem, 3vw, 2.7rem);
+}
+
+@media (max-width: 1050px) {
+  .about-page .about-hero {
+    padding-bottom: 2.3rem;
+  }
+
+  .about-page .about-approach {
+    padding-top: 2.3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-approach-grid,
+  .about-trainers-grid,
+  .about-funding-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 2rem;
+  }
+
+  .about-hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  }
+
+.about-approach-grid {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.5fr);
+  }
+
+  .about-values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.5rem;
+  }
+
+  .about-value:nth-child(3) {
+    border-left: 0;
+  }
+}
+
+.about-approach-grid {
+  align-items: center;
+}
+
+@media (max-width: 680px) {
+  .about-hero-grid,
+  .about-approach-grid,
+  .about-trainers-grid,
+  .about-funding-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.4rem;
+  }
+
+  .about-hero-art {
+    width: min(80%, 250px);
+  }
+
+  .about-approach-visual {
+    width: min(78%, 250px);
+  }
+
+  .about-values-grid {
+    row-gap: 1.2rem;
+  }
+
+  .about-value {
+    padding-inline: 0.65rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-values-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1rem;
+  }
+
+  .about-value + .about-value {
+    padding-top: 1rem;
+    border-top: 1px solid rgb(41 45 45 / 17%);
+    border-left: 0;
+  }
+}

@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/home.css";
+---
+
+<Layout title="Mentions légales" description="Éditeur, hébergement, propriété intellectuelle et données personnelles du site AFRAP Compétences.">
+  <section class="page-hero legal-hero">
+    <div class="container">
+      <p class="eyebrow">AFRAP COMPÉTENCES</p>
+      <h1>Mentions légales</h1>
+    </div>
+  </section>
+
+  <section class="section legal-section">
+    <div class="container legal-content">
+      <section>
+        <h2>Éditeur du site</h2>
+        <p>Le présent site est édité par :</p>
+        <p>CARRENO MATEOS Elisa EI, entrepreneur individuel exerçant sous le nom commercial AFRAP.</p>
+        <p>AFRAP est une marque enregistrée auprès de l’Institut national de la propriété industrielle (INPI).</p>
+        <ul>
+          <li>SIREN : 132 483 728</li>
+          <li>SIRET : 13248372800011</li>
+          <li>Immatriculation : Registre national des entreprises (RNE)</li>
+          <li>Adresse : 7 rue du Chalet, 95460 Ezanville, France</li>
+          <li>Adresse électronique : <a href="mailto:contact@afrap.fr">contact@afrap.fr</a></li>
+          <li>Téléphone : <a href="tel:+33636388682">06 36 38 86 82</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Direction de la publication</h2>
+        <p>Directrice de la publication : CARRENO MATEOS Elisa</p>
+      </section>
+
+      <section>
+        <h2>Hébergement</h2>
+        <p>Le site est hébergé par GitHub Pages, service proposé par :</p>
+        <p>GitHub, Inc.<br />88 Colin P. Kelly Jr. Street<br />San Francisco, CA 94107<br />États-Unis</p>
+      </section>
+
+      <section>
+        <h2>Propriété intellectuelle</h2>
+        <p>La marque AFRAP est enregistrée auprès de l’Institut national de la propriété industrielle (INPI).</p>
+        <p>Les contenus présents sur le site, notamment les textes, éléments graphiques, identité visuelle, illustrations et ressources, sont protégés par les dispositions applicables en matière de propriété intellectuelle.</p>
+        <p>Sauf mention contraire, ces contenus sont la propriété de leur auteur ou sont utilisés par l’AFRAP dans le respect des droits applicables.</p>
+        <p>Toute reproduction, représentation, adaptation ou utilisation de tout ou partie des contenus du site nécessite l’autorisation préalable du titulaire des droits concernés, sauf dans les cas prévus par la loi.</p>
+        <p>Les articles et ressources publiés sur le site peuvent s’appuyer sur des publications institutionnelles ou professionnelles. Les sources utilisées sont indiquées directement dans les contenus concernés.</p>
+      </section>
+
+      <section>
+        <h2>Données personnelles</h2>
+        <p>Le site afrap.fr ne collecte ni ne stocke aucune donnée personnelle.</p>
+        <p>Les prises de rendez-vous sont réalisées via la plateforme externe Calendly. Les informations renseignées à cette occasion sont traitées par Calendly conformément à leur politique de confidentialité et à leurs règles en matière de protection des données.</p>
+        <p>L’inscription à la newsletter est réalisée via la plateforme externe Brevo. Les informations renseignées lors de l’inscription sont utilisées uniquement pour l’envoi de communications de la part de l’AFRAP et sont traitées par Brevo conformément à leur politique de confidentialité et à leurs règles en matière de protection des données.</p>
+      </section>
+
+      <section>
+        <h2>Responsabilité</h2>
+        <p>L’AFRAP veille à fournir sur ce site des informations aussi exactes et actualisées que possible.</p>
+        <p>Les contenus proposés ont toutefois une vocation informative et peuvent évoluer. Ils ne se substituent pas aux textes officiels, recommandations ou informations publiées par les autorités et organismes compétents.</p>
+        <p>Les liens externes présents sur le site peuvent conduire vers des ressources publiées et administrées par des tiers. L’AFRAP n’exerce aucun contrôle sur l’évolution de ces sites externes.</p>
+      </section>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal-hero {
+    padding-block: 3.5rem;
+  }
+
+  .legal-hero .eyebrow {
+    color: var(--color-primary);
+  }
+
+  .legal-hero h1 {
+    margin-bottom: 0;
+  }
+
+  .legal-section {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .legal-content {
+    max-width: 850px;
+  }
+
+  .legal-content > section + section {
+    margin-top: 2.25rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .legal-content h2 {
+    margin-bottom: 0.9rem;
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  }
+
+  .legal-content p,
+  .legal-content li {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .legal-content ul {
+    margin-bottom: 1.25rem;
+  }
+</style>

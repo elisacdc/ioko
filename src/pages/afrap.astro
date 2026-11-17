@@ -1,0 +1,214 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import HomeFinalCTA from "../components/HomeFinalCTA.astro";
+import { url } from "../lib/links";
+import "@fontsource-variable/manrope";
+import "../styles/home.css";
+import "../styles/about.css";
+
+const values = [
+  {
+    title: "Humanité",
+    text: "Parce que l’accompagnement repose avant tout sur la rencontre avec une personne, son histoire, ses besoins et ses choix.",
+  },
+  {
+    title: "Professionnalisme",
+    text: "Des contenus structurés autour d’objectifs pédagogiques clairement définis et de pratiques professionnelles adaptées.",
+  },
+  {
+    title: "Expertise terrain",
+    text: "Des formations construites à partir des réalités rencontrées par les professionnels de l’aide et de l’accompagnement.",
+  },
+  {
+    title: "Transmission",
+    text: "Des connaissances, des outils et des repères conçus pour être réutilisés après la formation.",
+  },
+];
+---
+
+<Layout
+  title="AFRAP : notre organisme de formation pour l’aide à domicile"
+  description="Découvrez l’AFRAP, Agence de Formation, de Ressources et d’Accompagnement des Professionnels, et son approche ancrée dans les réalités de l’aide à domicile."
+  ogImage="images/about-hero-hands.webp"
+  ogImageAlt="Une professionnelle accompagne une personne âgée à domicile."
+>
+  <div class="home-page about-page">
+    <section class="home-hero about-hero" aria-labelledby="about-title">
+      <div class="container about-hero-grid">
+        <div class="home-hero-copy">
+          <p class="home-eyebrow">Qui sommes-nous ?</p>
+          <h1 id="about-title">
+            Une agence dédiée<br />
+            aux professionnels<br />
+            de l’accompagnement
+          </h1>
+          <div class="about-copy about-hero-description">
+            <p>
+              <strong class="about-agency-name">L’<span>A</span>gence de <span>F</span>ormation, de <span>R</span>essources et d’<span>A</span>ccompagnement des <span>P</span>rofessionnels</strong>{" "}
+              est née d’une expérience de plusieurs années dans la
+              formation professionnelle et le secteur médico-social.
+            </p>
+            <p>
+              Nous accompagnons les structures et les professionnels de l’aide à
+              domicile dans le développement de leurs compétences, en proposant des{" "}
+              <strong>formations concrètes, ancrées dans les réalités du terrain</strong>,
+              ainsi que des ressources pour prendre du recul, approfondir certaines
+              thématiques et suivre les évolutions du secteur.
+            </p>
+            <p>
+              Notre objectif est simple : <strong>soutenir la qualité de l’accompagnement</strong>,
+              au service des personnes et de ceux qui les accompagnent au quotidien.
+            </p>
+          </div>
+        </div>
+        <figure class="about-hero-art" aria-hidden="true">
+          <span class="about-hero-shape about-hero-shape-sage"></span>
+          <span class="about-hero-shape about-hero-shape-terracotta"></span>
+          <span class="about-hero-shape about-hero-shape-petrol"></span>
+          <img
+            src={url("images/about-hero-hands.webp")}
+            width="1286"
+            height="1223"
+            alt=""
+            fetchpriority="high"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="about-approach" aria-labelledby="about-approach-title">
+      <div class="container about-approach-grid">
+        <figure class="about-approach-visual">
+          <span class="about-approach-shape about-approach-shape-sage"></span>
+          <span class="about-approach-shape about-approach-shape-terracotta"></span>
+          <span class="about-approach-shape about-approach-shape-petrol"></span>
+          <img
+            src={url("images/home-notes-hq.webp")}
+            width="352"
+            height="321"
+            alt=""
+            loading="lazy"
+          />
+        </figure>
+        <div class="about-approach-copy">
+          <SectionTitle
+            className="about-approach-heading"
+            id="about-approach-title"
+            eyebrow="Notre approche"
+            title={"Partir du terrain\npour construire la formation"}
+          />
+          <p>
+            Chaque structure a son organisation, ses contraintes et ses équipes.
+            Nous prenons le temps d’écouter vos besoins afin de proposer des
+            formations adaptées à votre contexte et aux situations rencontrées
+            par vos professionnels.
+          </p>
+          <p>
+            Nos formations associent apports théoriques, échanges d’expériences,
+            études de situations professionnelles, mises en pratique et outils
+            directement mobilisables sur le terrain.
+          </p>
+          <p>
+            L’enjeu est que chacun puisse repartir avec{" "}
+            <strong>des repères concrets et des méthodes applicables dans sa pratique quotidienne.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-values" aria-label="Nos valeurs">
+      <div class="container">
+        <p class="home-eyebrow">Nos valeurs</p>
+        <div class="about-values-grid">
+          {values.map((value, index) => (
+            <article class="about-value">
+              <span class="about-value-number">0{index + 1}</span>
+              <h2>{value.title}</h2>
+              <p>{value.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="about-trainers" aria-labelledby="about-trainers-title">
+      <div class="container about-trainers-grid">
+        <SectionTitle
+          className="about-trainers-heading"
+          id="about-trainers-title"
+          eyebrow="Nos formateurs"
+          title={"Des formateurs choisis\npour leur expertise"}
+        />
+        <div class="about-copy">
+          <p>
+            Les formations AFRAP Compétences sont animées par des
+            {" "}<strong>professionnels expérimentés</strong>, issus du soin, de
+            l’accompagnement et du secteur médico-social.
+          </p>
+          <p>
+            Nos formateurs sont sélectionnés pour leur connaissance du terrain,
+            leur maîtrise des thématiques abordées et leur capacité à transmettre
+            des contenus de manière claire, concrète et accessible.
+          </p>
+          <p>
+            Cette expérience professionnelle garantit des formations
+            {" "}<strong>au plus proche des réalités des équipes</strong>, avec des
+            exemples, des outils et des méthodes facilement transposables dans
+            le quotidien.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-funding" aria-labelledby="about-funding-title">
+      <div class="container about-funding-grid">
+        <SectionTitle
+          className="about-funding-heading"
+          id="about-funding-title"
+          eyebrow="Financement"
+          title={"Financer votre projet\nde formation"}
+        >
+          <img
+            class="about-funding-logos"
+            src={url("images/opco-financement.webp")}
+            width="2172"
+            height="724"
+            alt="Logos des OPCO EP, Santé, Uniformation, Atlas, AKTO, Constructys, Opcommerce, OCAPIAT et Mobilités."
+            loading="lazy"
+          />
+        </SectionTitle>
+        <div class="about-copy">
+          <p>
+            Les formations proposées par AFRAP Compétences peuvent faire l’objet
+            d’une{" "}<strong>prise en charge par les OPCO</strong>, selon les critères
+            et modalités de financement applicables à chaque structure.
+          </p>
+          <p>
+            Les possibilités de financement seront étudiées au cas par cas.
+          </p>
+          <p>
+            Nous pouvons échanger avec vous en amont afin de vous aider à
+            identifier le format de formation correspondant à votre besoin et à
+            préparer votre projet dans les meilleures conditions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <HomeFinalCTA
+      id="about-cta-title"
+      eyebrow="Échangeons"
+      title="Un projet, une question ?"
+      paragraphs={[
+        "Vous souhaitez organiser une formation, obtenir un devis ou simplement échanger sur les besoins de votre équipe ?",
+        "Prenons quelques minutes pour en discuter et identifier ensemble la réponse la plus adaptée à votre structure.",
+      ]}
+      primaryLabel="Nous contacter"
+      primaryHref={url("contact/")}
+      secondaryLabel="Découvrir nos formations"
+      secondaryHref={url("formations/")}
+      theme="petrol"
+    />
+  </div>
+</Layout>

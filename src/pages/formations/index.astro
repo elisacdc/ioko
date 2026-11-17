@@ -1,0 +1,117 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import TrainingCard from "../../components/TrainingCard.astro";
+import HomeFinalCTA from "../../components/HomeFinalCTA.astro";
+import { BOOKING_URL } from "../../config/site";
+import { mailto, quoteMail, url } from "../../lib/links";
+import "@fontsource-variable/manrope";
+import "../../styles/home.css";
+import "../../styles/formations.css";
+
+const trainings = (await getCollection("formations")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title, "fr", { sensitivity: "base" }),
+);
+const bookingHref =
+  BOOKING_URL ||
+  mailto(
+    "Demande de rendez-vous",
+    "Bonjour,\n\nJe souhaiterais convenir d’un rendez-vous pour échanger sur un projet de formation.\n\nStructure :\nTéléphone :\nVos disponibilités :\n\nCordialement,",
+  );
+---
+
+<Layout
+  title="Formations pour l’aide à domicile et les services autonomie"
+  description="Consultez le catalogue AFRAP : formations pour auxiliaires de vie et professionnels de l’aide à domicile, avec objectifs, durée, format et modalités."
+  ogImage="images/catalogue-mockup.webp"
+  ogImageAlt="Catalogue de formations AFRAP Compétences."
+>
+  <div class="home-page formations-page">
+    <section class="home-hero formations-hero" aria-labelledby="formations-title">
+      <div class="container home-hero-grid formations-hero-grid">
+        <div class="home-hero-copy">
+          <p class="home-eyebrow">Le catalogue AFRAP</p>
+          <h1 id="formations-title">
+            Des formations pour<br />
+            vos réalités de terrain
+          </h1>
+          <div class="home-hero-intro">
+            <p>
+              Des programmes concrets pour les auxiliaires de vie et les
+              professionnels de l’accompagnement.
+            </p>
+            <p>
+              Retrouvez les objectifs, le déroulé et les modalités de chaque
+              formation.
+            </p>
+          </div>
+        </div>
+        <figure class="formations-cover">
+          <img
+            src={url("images/home-training-room.webp")}
+            alt="Des professionnelles participent à une formation."
+            width="354"
+            height="321"
+            fetchpriority="high"
+          />
+          <img
+            src={url("images/formations/accompagner-avec-bientraitance.webp")}
+            alt="Illustration de la formation Accompagner avec bientraitance."
+            width="1200"
+            height="1200"
+          />
+          <img
+            src={url("images/home-notes.webp")}
+            width="356"
+            height="321"
+            alt="Un carnet de notes posé près d’un ordinateur."
+          />
+          <img
+            src={url("images/home-transfer.webp")}
+            width="351"
+            height="318"
+            alt="Une professionnelle accompagne un geste de mobilité."
+          />
+          <span class="formations-cover-dot" aria-hidden="true"></span>
+        </figure>
+      </div>
+    </section>
+
+    <section class="home-formations formations-catalogue" aria-labelledby="catalogue-title">
+      <div class="container">
+        <div class="home-section-heading">
+          <SectionTitle
+            id="catalogue-title"
+            eyebrow="Catalogue · 2026-2027"
+            title="Nos formations"
+          />
+        </div>
+        <p class="home-section-intro">
+          De l’accompagnement quotidien aux situations plus spécifiques,
+          choisissez les compétences à renforcer.<br />
+          Les contenus et modalités peuvent être ajustés aux besoins de votre structure.
+        </p>
+        <div class="home-feature-cards training-grid catalogue-grid">
+          {trainings.map((training, index) => (
+            <TrainingCard training={training} index={index} catalogue />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <HomeFinalCTA
+      id="formations-cta-title"
+      eyebrow="Construisons la suite, ensemble"
+      title={"Une équipe, des besoins,\nune formation adaptée."}
+      paragraphs={[
+        "Échangeons sur les réalités de votre structure et construisons ensemble une proposition adaptée à vos besoins.",
+      ]}
+      primaryLabel="Demander un devis"
+      primaryHref={quoteMail()}
+      secondaryLabel="Prendre rendez-vous"
+      secondaryHref={bookingHref}
+      theme="petrol"
+    />
+  </div>
+</Layout>

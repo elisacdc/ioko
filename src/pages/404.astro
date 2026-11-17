@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import { url } from "../lib/links";
+---
+
+<Layout
+  title="Page introuvable"
+  description="Cette page n’existe pas ou a été déplacée."
+  noindex
+>
+  <section class="section container">
+    <p class="eyebrow">Erreur 404</p>
+    <h1>Un chemin à retrouver.</h1>
+    <p>Cette page n’existe pas ou a été déplacée.</p>
+    <Button href={url()}>Revenir à l’accueil</Button>
+  </section>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  id: string;
+  eyebrow: string;
+  title: string;
+  paragraphs: string[];
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+  theme?: "default" | "petrol";
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  paragraphs,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
+  theme = "default",
+} = Astro.props;
+---
+
+<section class:list={["home-final-cta", theme === "petrol" && "home-final-cta--petrol"]} aria-labelledby={id}>
+  <div class="container home-final-cta-inner">
+    <div>
+      <p class="home-eyebrow">{eyebrow}</p>
+      <h2 id={id}>{title}</h2>
+      {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <div class="home-final-cta-actions">
+      <Button href={primaryHref}>{primaryLabel}</Button>
+      {secondaryHref ? (
+        <Button href={secondaryHref} secondary>{secondaryLabel}</Button>
+      ) : (
+        <span class="button secondary" aria-disabled="true">
+          {secondaryLabel}<span aria-hidden="true">↗</span>
+        </span>
+      )}
+    </div>
+  </div>
+</section>

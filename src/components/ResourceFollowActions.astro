@@ -1,0 +1,23 @@
+---
+import ResourceFollowButton from "./ResourceFollowButton.astro";
+import { LINKEDIN_URL, NEWSLETTER_URL } from "../config/site";
+
+const actions = [
+  {
+    label: "LinkedIn",
+    accessibleLabel: "Suivre l’AFRAP sur LinkedIn",
+    href: LINKEDIN_URL,
+    icon: "linkedin" as const,
+  },
+  {
+    label: "Newsletter",
+    accessibleLabel: "S’inscrire à la newsletter AFRAP via Brevo",
+    href: NEWSLETTER_URL,
+    icon: "mail" as const,
+  },
+];
+---
+
+<div class="resources-follow-actions" role="group" aria-label="Suivre AFRAP et recevoir la newsletter">
+  {actions.map((action) => <ResourceFollowButton {...action} />)}
+</div>
