@@ -26,6 +26,21 @@ const canonicalUrls = new Set();
 const sitemapUrls = new Set();
 const sitemapLastmods = new Map();
 let articleSchemaCount = 0;
+const articleMarkdownCount = (await readdir(path.resolve("src/content/articles"))).filter((name) => name.endsWith(".md")).length;
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const trainingPages = files.filter((file) =>
+  file.includes(`${path.sep}formations${path.sep}`) &&
+  !file.endsWith(path.join("formations", "index.html")),
+);
+const homeHtml = await readFile(path.join(root, "index.html"), "utf8");
+const catalogueHtml = await readFile(path.join(root, "formations", "index.html"), "utf8");
+for (const file of trainingPages) {
+  const slug = path.basename(path.dirname(file));
+  const href = `${base}/formations/${slug}/`;
+  const anchorPattern = new RegExp(`<a\\b(?=[^>]*\\bhref="${escapeRegExp(href)}")[^>]*>`);
+  assert(anchorPattern.test(homeHtml), `Accueil : lien HTML direct absent vers ${slug}`);
+  assert(anchorPattern.test(catalogueHtml), `Catalogue : lien HTML direct absent vers ${slug}`);
+}
 for (const file of files) {
   const html = await readFile(file, "utf8");
   assert(
@@ -86,6 +101,11 @@ for (const file of files) {
   }
   if (isTrainingDetail) {
     assert(schemaTypes.includes("BreadcrumbList"), `${file}: fil d’Ariane structuré absent`);
+    const breadcrumb = schemas.find((schema) => schema["@type"] === "BreadcrumbList");
+    const items = breadcrumb?.itemListElement || [];
+    assert.equal(items.length, 3, `${file}: le fil d’Ariane doit avoir trois niveaux`);
+    assert.equal(items[0]?.name, "Accueil", `${file}: le fil d’Ariane doit commencer par Accueil`);
+    assert.equal(items[1]?.name, "Formations", `${file}: le deuxième niveau doit être Formations`);
   }
   for (const anchor of html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {
     assert.match(anchor[0], /rel="[^"]*noopener[^"]*noreferrer|[^"]*noreferrer[^"]*noopener[^"]*"/, `${file}: lien externe sans noopener noreferrer`);
@@ -165,7 +185,7 @@ for (const sitemapFile of sitemapFiles) {
     if (lastmod) sitemapLastmods.set(loc, lastmod);
   }
 }
-assert.equal(articleSchemaCount, 6, "Chaque article publié doit avoir un schéma Article.");
+assert.equal(articleSchemaCount, articleMarkdownCount, "Chaque article publié doit avoir un schéma Article.");
 assert.equal(sitemapUrls.size, canonicalUrls.size, "Le sitemap doit correspondre aux routes indexables.");
 for (const canonical of canonicalUrls) assert(sitemapUrls.has(canonical), `Canonical absent du sitemap : ${canonical}`);
 assert(![...sitemapUrls].some((loc) => /\/404(?:\.html|\/)$/i.test(loc)), "La page 404 ne doit pas figurer dans le sitemap.");

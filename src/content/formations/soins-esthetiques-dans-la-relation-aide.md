@@ -6,6 +6,7 @@ illustrationAlt: "Illustration de la formation Soins esthétiques dans la relati
 illustrationWidth: 960
 illustrationHeight: 1200
 programUpdated: "17/11/2026"
+updatedDate: "2026-11-17"
 programVersion: "1.1"
 programHash: "5dd149f34e32ff89b8a9f9cd1461d2c6a5e7c084eff2d6fc1a5aa0d535f03634"
 title: "Soins esthétiques dans la relation d’aide"

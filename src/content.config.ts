@@ -10,6 +10,7 @@ const formations = defineCollection({
     metaDescription: z.string().optional(),
     slug,
     category: z.string(),
+    updatedDate: z.coerce.date().optional(),
     illustration: z.string(),
     illustrationAlt: z.string(),
     illustrationWidth: z.number().default(1200),

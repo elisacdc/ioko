@@ -47,10 +47,21 @@ const groupPrice =
         {
           "@type": "ListItem",
           position: 1,
+          name: "Accueil",
+          item: new URL(url(""), Astro.site).href,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
           name: "Formations",
           item: new URL(url("formations/"), Astro.site).href,
         },
-        { "@type": "ListItem", position: 2, name: t.title },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: t.title,
+          item: new URL(url(`formations/${t.slug}/`), Astro.site).href,
+        },
       ],
     },
   ]}

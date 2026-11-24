@@ -6,6 +6,7 @@ const ignoredForProgramHash = new Set([
   "programUpdated",
   "programVersion",
   "programHash",
+  "updatedDate",
   "category",
   "illustration",
   "illustrationAlt",
@@ -74,20 +75,25 @@ for (const file of files) {
   const currentHash = digestProgram(markdown);
   const previousHash = readField(frontmatter, "programHash");
   let updated = readField(frontmatter, "programUpdated");
+  let updatedDate = readField(frontmatter, "updatedDate");
   let version = readField(frontmatter, "programVersion");
 
   if (!previousHash) {
     if (!updated || /compl[eé]ter/i.test(updated)) updated = today;
     if (!version || /compl[eé]ter/i.test(version)) version = "1.0";
+    if (!updatedDate) updatedDate = today;
     frontmatter = setField(frontmatter, "programUpdated", updated);
     frontmatter = setField(frontmatter, "programVersion", version);
     frontmatter = setField(frontmatter, "programHash", currentHash);
+    frontmatter = setField(frontmatter, "updatedDate", updatedDate);
   } else if (previousHash !== currentHash) {
     updated = today;
+    updatedDate = today;
     version = bumpMinorVersion(version);
     frontmatter = setField(frontmatter, "programUpdated", updated);
     frontmatter = setField(frontmatter, "programVersion", version);
     frontmatter = setField(frontmatter, "programHash", currentHash);
+    frontmatter = setField(frontmatter, "updatedDate", updatedDate);
   }
 
   const nextMarkdown = `${opening}${frontmatter}${closing}${body}`;

@@ -57,7 +57,7 @@ function readCollection(collection, routePrefix, dateFields) {
 }
 
 readCollection("articles", "/ressources", ["updatedDate", "date"]);
-readCollection("formations", "/formations", ["programUpdated"]);
+readCollection("formations", "/formations", ["updatedDate", "programUpdated"]);
 
 const configuredBase = (process.env.BASE_PATH || "/").replace(/\/$/, "");
 
