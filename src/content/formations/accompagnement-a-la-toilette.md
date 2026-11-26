@@ -4,12 +4,12 @@ slug: "accompagnement-a-la-toilette"
 illustration: "images/formations/accompagnement-a-la-toilette.webp"
 illustrationAlt: "Illustration de la formation Accompagnement à la toilette."
 programUpdated: "06/10/2026"
-updatedDate: "2026-11-17"
+updatedDate: "2026-11-26"
 programVersion: "1.0"
 programHash: "0e7d9df041623512ae4b54e2c5b3451a1d547ff3aa3424ac9a53dc47fe5d8a3b"
 title: "Accompagnement à la toilette"
-seoTitle: "Formation auxiliaire de vie : accompagnement à la toilette"
-metaDescription: "Formation pour auxiliaires de vie sur l’accompagnement à la toilette à domicile : respect de l’intimité, autonomie, habitudes de vie et gestes professionnels."
+seoTitle: "Formation aide à la toilette"
+metaDescription: "Formation professionnelle d’aide à la toilette pour auxiliaires de vie et professionnels à domicile : hygiène, toilette au lavabo, douche ou lit, autonomie et sécurité."
 category: "Gestes du quotidien"
 duration: "14 heures · 2 jours"
 format: "Présentiel"
@@ -66,6 +66,11 @@ evaluation: "Évaluation de pré-formation, questions tout au long de la formati
 accessibility: "Nos formations sont accessibles aux personnes en situation de handicap. Les besoins spécifiques sont étudiés en amont afin d’identifier les adaptations pédagogiques, matérielles ou organisationnelles nécessaires."
 pricing: "Tarification sur mesure. Contactez-nous pour obtenir un devis adapté à votre projet de formation."
 access: "Après analyse des besoins, une proposition vous est transmise. La date de formation est fixée d’un commun accord selon les disponibilités des différentes parties."
+seoHeading: "Formation aide à la toilette"
+seoIntro: "Cette formation professionnelle à l’aide à la toilette s’adresse aux auxiliaires de vie et aux professionnels de l’aide à domicile qui accompagnent des personnes en perte d’autonomie."
+detailAudience: "Auxiliaires de vie et professionnels de l’aide à domicile intervenant auprès de personnes en perte d’autonomie."
+practicalApplications: ["Préparer et sécuriser une intervention d’aide à la toilette en tenant compte des capacités, des habitudes et de l’environnement de la personne.","Mettre en œuvre les bonnes pratiques pour la toilette au lavabo, à la douche et au lit, ainsi que pour la toilette intime et les soins de confort, en adaptant les gestes aux capacités de la personne.","Repérer les modifications de l’état cutané et les situations nécessitant une transmission ou une alerte.","Mobiliser et installer la personne pendant les soins en utilisant des principes simples de sécurité et d’ergonomie."]
+faq: [{"question":"Quelle est la durée de la formation aide à la toilette ?","answer":"La formation dure 14 heures, réparties sur deux jours."},{"question":"À quels professionnels s’adresse cette formation ?","answer":"Elle s’adresse aux auxiliaires de vie et aux professionnels de l’aide à domicile intervenant auprès de personnes en perte d’autonomie."},{"question":"Quels types de toilette sont abordés ?","answer":"Le programme aborde la toilette au lavabo, à la douche et au lit, ainsi que la toilette intime et les soins de confort."},{"question":"La formation aborde-t-elle l’autonomie et la sécurité de la personne ?","answer":"Oui. Les objectifs prévoient d’adapter l’intervention aux capacités et habitudes de la personne, de favoriser sa participation et de mobiliser et installer la personne en sécurité."}]
 ---
 
 La toilette engage bien plus que l’hygiène corporelle : elle touche à l’intimité, à l’autonomie et à la confiance. Cette formation apporte des repères pour adapter l’aide aux capacités, aux habitudes et à l’état de la personne.

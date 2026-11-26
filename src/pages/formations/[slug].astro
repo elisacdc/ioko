@@ -59,7 +59,7 @@ const groupPrice =
         {
           "@type": "ListItem",
           position: 3,
-          name: t.title,
+          name: t.seoHeading ?? t.title,
           item: new URL(url(`formations/${t.slug}/`), Astro.site).href,
         },
       ],
@@ -72,7 +72,8 @@ const groupPrice =
         <a class="back-link" href={url("formations/")}>
           ← Toutes les formations
         </a>
-        <h1>{t.title}</h1>
+        <h1>{t.seoHeading ?? t.title}</h1>
+        {t.seoHeading && <p class="lead training-detail-subtitle">{t.title}</p>}
         {t.demo && (
           <p class="demo-note">
             Formation de démonstration · programme et modalités à valider. Ne
@@ -99,11 +100,12 @@ const groupPrice =
     <div class="prose">
       <section>
         <h2>Description</h2>
+        {t.seoIntro && <p>{t.seoIntro}</p>}
         <Content />
       </section>
       <section>
         <h2>Public visé</h2>
-        <p>{t.audience}</p>
+        <p>{t.detailAudience ?? t.audience}</p>
         <h3>Capacité d’accueil</h3>
         <p>Groupe de 6 à 12 personnes</p>
       </section>
@@ -124,6 +126,14 @@ const groupPrice =
           ))}
         </ol>
       </section>
+      {t.practicalApplications && (
+        <section>
+          <h2>En pratique, cette formation vous permet de…</h2>
+          <ul>
+            {t.practicalApplications.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      )}
       <section>
         <h2>Moyens pédagogiques</h2>
         <ul>
@@ -149,6 +159,17 @@ const groupPrice =
         <h2>Accessibilité</h2>
         <p>{t.accessibility}</p>
       </section>
+      {t.faq && (
+        <section>
+          <h2>Questions fréquentes</h2>
+          {t.faq.map((item) => (
+            <div>
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </div>
+          ))}
+        </section>
+      )}
       {relatedArticles.length > 0 && (
         <section aria-labelledby="related-resources-title">
           <h2 id="related-resources-title">Ressources associées</h2>
