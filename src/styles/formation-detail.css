@@ -136,6 +136,10 @@
   margin-top: 0;
 }
 
+.faq-disclosure-content h3 {
+  font-size: 1.15rem;
+}
+
 @media (max-width: 800px) {
   .training-detail-hero.training-detail-hero > .container {
     grid-template-columns: minmax(0, 1fr) minmax(160px, 0.4fr);
