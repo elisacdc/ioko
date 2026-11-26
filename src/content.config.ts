@@ -31,7 +31,6 @@ const formations = defineCollection({
     capacity: z.string(),
     objectives: z.array(z.string()),
     program: z.array(z.object({ title: z.string(), description: z.string() })),
-    practicalApplications: z.array(z.string()).optional(),
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
     methods: z.array(z.string()),
     evaluation: z.string(),

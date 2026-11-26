@@ -17,7 +17,6 @@ const ignoredForProgramHash = new Set([
   "seoIntro",
   "metaDescription",
   "detailAudience",
-  "practicalApplications",
   "faq",
   "relatedArticles",
   "order",

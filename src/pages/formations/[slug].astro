@@ -126,14 +126,6 @@ const groupPrice =
           ))}
         </ol>
       </section>
-      {t.practicalApplications && (
-        <section>
-          <h2>En pratique, cette formation vous permet de…</h2>
-          <ul>
-            {t.practicalApplications.map((item) => <li>{item}</li>)}
-          </ul>
-        </section>
-      )}
       <section>
         <h2>Moyens pédagogiques</h2>
         <ul>
@@ -159,17 +151,6 @@ const groupPrice =
         <h2>Accessibilité</h2>
         <p>{t.accessibility}</p>
       </section>
-      {t.faq && (
-        <section>
-          <h2>Questions fréquentes</h2>
-          {t.faq.map((item) => (
-            <div>
-              <h3>{item.question}</h3>
-              <p>{item.answer}</p>
-            </div>
-          ))}
-        </section>
-      )}
       {relatedArticles.length > 0 && (
         <section aria-labelledby="related-resources-title">
           <h2 id="related-resources-title">Ressources associées</h2>
@@ -181,6 +162,22 @@ const groupPrice =
         </section>
       )}
       <Button href={formationQuoteMail(t.title)}>Demander un devis</Button>
+      {t.faq && (
+        <details class="faq-disclosure">
+          <summary>
+            <span class="faq-disclosure-title">Questions fréquentes</span>
+            <span class="faq-disclosure-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-disclosure-content">
+            {t.faq.map((item) => (
+              <div>
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
     </div>
 
     <aside class="practical">

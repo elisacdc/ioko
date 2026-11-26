@@ -79,6 +79,63 @@
   line-height: 1.5;
 }
 
+.prose .faq-disclosure {
+  margin-top: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.prose .faq-disclosure > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.25rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  list-style: none;
+  border-radius: 3px;
+}
+
+.prose .faq-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-disclosure-icon::before {
+  content: "";
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: -0.25rem;
+  border-right: 2px solid var(--color-accent-text);
+  border-bottom: 2px solid var(--color-accent-text);
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.faq-disclosure[open] .faq-disclosure-icon::before {
+  transform: rotate(225deg);
+}
+
+.prose .faq-disclosure > summary:hover .faq-disclosure-title,
+.prose .faq-disclosure > summary:focus-visible .faq-disclosure-title {
+  text-decoration: underline;
+  text-decoration-color: var(--color-secondary);
+  text-underline-offset: 4px;
+}
+
+.prose .faq-disclosure > summary:focus-visible {
+  outline: 2px solid var(--color-accent-text);
+  outline-offset: 4px;
+}
+
+.faq-disclosure-content > div:first-child h3 {
+  margin-top: 0;
+}
+
 @media (max-width: 800px) {
   .training-detail-hero.training-detail-hero > .container {
     grid-template-columns: minmax(0, 1fr) minmax(160px, 0.4fr);
